@@ -31,11 +31,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='поиск фотографий с API NASA и выгрузка их в телеграмм с помощью бота, можно настроить время интервала между выкладыванием фото (по умолчанию 4 часа). Для spacex нужен id номер конкретного запуска ракеты, иначе будет найден последний запуск.')
     parser.add_argument('--id', help='необходимый id запуска')
     parser.add_argument('--time', help='промежуток времени (в секундах), обозначающий интервал, через который будут отправляться фотографии ботом', type=int)
-    args_tg = parser.parse_args()
+    args = parser.parse_args()
 
     try:
-        if args_tg.id:
-            images = get_spacex_images(args_tg.id)
+        if args.id:
+            images = get_spacex_images(args.id)
             fetch_spacex_last_launch(images)
         else:
             images = get_spacex_images(id='latest')
@@ -55,8 +55,8 @@ if __name__ == "__main__":
     get_epic(response_epic)
 
     try:
-        if args_tg.time:
-            time_stop(args_tg.time)
+        if args.time:
+            time_stop(args.time)
         else:
             time_stop(stop=14400)
 
