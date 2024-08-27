@@ -14,7 +14,7 @@ if not os.path.exists('images'):
     os.makedirs('images')
 
 
-def image_format(nasa_url):
+def separates_image_format(nasa_url):
     split = os.path.splitext(nasa_url)[1]
     return split
 
@@ -41,10 +41,10 @@ if __name__ == "__main__":
         print(error)
 
     token = os.environ['NASA_TOKEN']
-    image_format(nasa_url)
-    filename = f'images/image_nasa.{image_format(nasa_url)}'
+    separates_image_format(nasa_url)
+    filename = f'images/image_nasa.{separates_image_format(nasa_url)}'
     add_image(nasa_url, filename)
-    image_format(nasa_url)
+    separates_image_format(nasa_url)
     response_apod = get_apod_images(token)
     add_day_images(response_apod)
     response_epic = get_image_epic(token)
