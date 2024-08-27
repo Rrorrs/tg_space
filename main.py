@@ -1,7 +1,7 @@
 import os, errno
 import requests
 import argparse
-from fetch_spacex_images import fetch_spacex_last_launch, get_spacex_images
+from fetch_spacex_images import spacex_assigned_numbers, get_spacex_link
 from apod_images import add_day_images, get_apod_images
 from epic_images import get_epic, get_image_epic
 from dotenv import load_dotenv
@@ -34,8 +34,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     try:
-        images = get_spacex_images(args.id)
-        fetch_spacex_last_launch(images)
+        images = get_spacex_link(args.id)
+        spacex_assigned_numbers(images)
 
     except requests.exceptions.HTTPError as error:
         print(error)
