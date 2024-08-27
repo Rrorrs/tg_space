@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-token = os.environ['TOKEN']
+token = os.environ['NASA_TOKEN']
 days = []
 
 

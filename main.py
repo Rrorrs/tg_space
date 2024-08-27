@@ -40,7 +40,7 @@ if __name__ == "__main__":
     except requests.exceptions.HTTPError as error:
         print(error)
 
-    token = os.environ['TOKEN']
+    token = os.environ['NASA_TOKEN']
     image_format(nasa_url)
     filename = f'images/image_nasa.{image_format(nasa_url)}'
     add_image(nasa_url, filename)
