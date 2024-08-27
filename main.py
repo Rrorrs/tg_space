@@ -29,17 +29,13 @@ def add_image(nasa_url, filename):
 if __name__ == "__main__":
     load_dotenv()
     parser = argparse.ArgumentParser(description='поиск фотографий с API NASA и выгрузка их в телеграмм с помощью бота, можно настроить время интервала между выкладыванием фото (по умолчанию 4 часа). Для spacex нужен id номер конкретного запуска ракеты, иначе будет найден последний запуск.')
-    parser.add_argument('--id', help='необходимый id запуска')
-    parser.add_argument('--time', help='промежуток времени (в секундах), обозначающий интервал, через который будут отправляться фотографии ботом', type=int)
+    parser.add_argument('--id', help='необходимый id запуска', default='5eb87d46ffd86e000604b388')
+    parser.add_argument('--time', default=14400, help='промежуток времени (в секундах), обозначающий интервал, через который будут отправляться фотографии ботом', type=int)
     args = parser.parse_args()
 
     try:
-        if args.id:
-            images = get_spacex_images(args.id)
-            fetch_spacex_last_launch(images)
-        else:
-            images = get_spacex_images(id='latest')
-            fetch_spacex_last_launch(images)
+        images = get_spacex_images(args.id)
+        fetch_spacex_last_launch(images)
 
     except requests.exceptions.HTTPError as error:
         print(error)
@@ -55,10 +51,8 @@ if __name__ == "__main__":
     get_epic(response_epic)
 
     try:
-        if args.time:
-            time_stop(args.time)
-        else:
-            time_stop(stop=14400)
+        time_stop(args.time)
+
 
     except requests.exceptions.HTTPError as error:
         print(error)
