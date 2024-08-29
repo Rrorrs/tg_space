@@ -38,3 +38,7 @@ def get_epic(response_epic):
             file.write(response.content)
 
 
+if __name__=='__main__':
+    
+    response_epic = get_image_epic(token)
+    get_epic(response_epic)

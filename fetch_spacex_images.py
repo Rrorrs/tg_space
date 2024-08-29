@@ -1,4 +1,5 @@
 import requests
+import argparse
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -21,4 +22,14 @@ def spacex_assigned_numbers(images):
         with open(f'images/spacex_{image_number}.jpg', 'wb') as file:
             file.write(response.content)
 
-            
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='поиск фотографий с API NASA и выгрузка их в телеграмм с помощью бота, можно настроить время интервала между выкладыванием фото (по умолчанию 4 часа). Для spacex нужен id номер конкретного запуска ракеты, иначе будет найден последний запуск.')
+    parser.add_argument('--id', help='необходимый id запуска', default='5eb87d46ffd86e000604b388')
+    args = parser.parse_args()
+    try:
+        images = get_spacex_link(args.id)
+        spacex_assigned_numbers(images)
+
+    except requests.exceptions.HTTPError as error:
+        print(error)

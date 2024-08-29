@@ -25,3 +25,8 @@ def add_day_images(response_apod):
         response.raise_for_status()
         with open(f'images/nasa_apod_{image_number}.jpg', 'wb') as file:
             file.write(response.content)
+
+if __name__=='__main__':
+    
+    response_apod = get_apod_images(token)
+    add_day_images(response_apod)
