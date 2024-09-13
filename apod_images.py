@@ -4,12 +4,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-token = os.environ['NASA_TOKEN']
-days = []
-
-
 def get_apod_images(token):
-    response = requests.get(f'https://api.nasa.gov/planetary/apod?api_key={token}&count=30')
+    payload = {'api_key': f'{token}', 'count': 30}
+    response = requests.get(f'https://api.nasa.gov/planetary/apod', params=payload)
     response.raise_for_status()
     return response
 
@@ -27,6 +24,8 @@ def add_day_images(response_apod):
             file.write(response.content)
 
 if __name__=='__main__':
-    
+
+    token = os.environ['NASA_TOKEN']
+    days = []
     response_apod = get_apod_images(token)
     add_day_images(response_apod)
