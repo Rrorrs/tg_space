@@ -11,7 +11,7 @@ def get_apod_images(token, count_load):
     return response
 
 
-def add_day_images(response_apod):
+def download_day_images(response_apod):
     for block in response_apod.json():
         day_images = block['url']
         if os.path.splitext(day_images)[1] in ['.jpg', '.png']:
@@ -32,7 +32,7 @@ if __name__=='__main__':
         token = os.environ['NASA_TOKEN']
         days = []
         response_apod = get_apod_images(token, args.count_load)
-        add_day_images(response_apod)
+        download_day_images(response_apod)
     
     except requests.exceptions.HTTPError as error:
         print(error)
