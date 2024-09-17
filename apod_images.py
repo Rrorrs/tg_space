@@ -12,8 +12,8 @@ def get_apod_images(token, count_load):
 
 
 def download_day_images(response_apod):
-    for block in response_apod.json():
-        day_images = block['url']
+    for url_on_photo in response_apod.json():
+        day_images = url_on_photo['url']
         if os.path.splitext(day_images)[1] in ['.jpg', '.png']:
             days.append(day_images)
 
