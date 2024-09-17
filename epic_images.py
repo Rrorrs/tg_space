@@ -2,6 +2,8 @@ import datetime
 import requests
 import os
 from dotenv import load_dotenv
+from main import create_path
+
 load_dotenv()
 
 
@@ -32,10 +34,10 @@ def get_epic(response_epic):
         epic_images.append(epic_url)
 
     for image_number, image in enumerate(epic_images):
-        response = requests.get(image)
-        response.raise_for_status()
-        with open(f'images/nasa_epic_{image_number}.png', 'wb') as file:
-            file.write(response.content)
+        file_name = 'epic_nasa'
+        create_path(file_name, image, image_number)
+
+
 
 
 if __name__=='__main__':

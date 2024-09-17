@@ -20,6 +20,12 @@ def add_image(nasa_url, filename):
     with open(filename, 'wb') as file:
         file.write(response.content)
 
+def create_path(file_name, image, image_number):
+        response = requests.get(image)
+        response.raise_for_status()
+        with open(f'images/{file_name}_{image_number}.jpg', 'wb') as file:
+            file.write(response.content)
+
 
 if __name__ == "__main__":
     load_dotenv()

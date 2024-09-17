@@ -2,6 +2,8 @@ import requests
 import os
 import argparse
 from dotenv import load_dotenv
+from main import create_path
+
 
 
 def get_apod_images(token, count_load):
@@ -18,10 +20,9 @@ def download_day_images(response_apod):
             apod_photos.append(day_images)
 
     for image_number, image in enumerate(apod_photos):
-        response = requests.get(image)
-        response.raise_for_status()
-        with open(f'images/nasa_apod_{image_number}.jpg', 'wb') as file:
-            file.write(response.content)
+        file_name = 'nasa_apod'
+        create_path(file_name, image, image_number)
+
 
 if __name__=='__main__':
     load_dotenv()
