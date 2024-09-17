@@ -15,9 +15,9 @@ def download_day_images(response_apod):
     for url_on_photo in response_apod.json():
         day_images = url_on_photo['url']
         if os.path.splitext(day_images)[1] in ['.jpg', '.png']:
-            days.append(day_images)
+            apod_photos.append(day_images)
 
-    for image_number, image in enumerate(days):
+    for image_number, image in enumerate(apod_photos):
         response = requests.get(image)
         response.raise_for_status()
         with open(f'images/nasa_apod_{image_number}.jpg', 'wb') as file:
@@ -30,7 +30,7 @@ if __name__=='__main__':
     args = parser.parse_args()
     try:
         token = os.environ['NASA_TOKEN']
-        days = []
+        apod_photos = []
         response_apod = get_apod_images(token, args.count_load)
         download_day_images(response_apod)
     
