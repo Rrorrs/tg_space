@@ -9,7 +9,7 @@ import argparse
 
 
 
-def time_stop(stop):
+def launching_the_bot(stop):
     load_dotenv()
     tk = os.environ['BOT_TOKEN']
     bot = telegram.Bot(token=tk)
@@ -29,7 +29,7 @@ if __name__=='__main__':
     parser.add_argument('--time', default=14400, help='промежуток времени (в секундах), обозначающий интервал, через который будут отправляться фотографии ботом', type=int)
     args = parser.parse_args()
     try:
-        time_stop(args.time)
+        launching_the_bot(args.time)
 
 
     except requests.exceptions.HTTPError as error:

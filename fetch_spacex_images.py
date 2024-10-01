@@ -16,7 +16,7 @@ def get_spacex_link(id):
     return images
 
 
-def spacex_assigned_numbers(images):
+def spacex_index_generation(images):
     for image_number, image in enumerate(images):
         file_name = 'spacex'
         create_path(file_name, image, image_number)
@@ -28,6 +28,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     try:
         images = get_spacex_link(args.id)
-        spacex_assigned_numbers(images)
+        spacex_index_generation(images)
     except requests.exceptions.HTTPError as error:
         print("Неверно введён id запуска")
