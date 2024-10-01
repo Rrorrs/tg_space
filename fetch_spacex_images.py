@@ -30,4 +30,4 @@ if __name__ == '__main__':
         images = get_spacex_link(args.id)
         spacex_assigned_numbers(images)
     except requests.exceptions.HTTPError as error:
-        print(error)
+        print("Неверно введён id запуска")
