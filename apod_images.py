@@ -14,6 +14,7 @@ def get_apod_images(token, count_load):
 
 
 def download_day_images(response_apod):
+    apod_photos = []
     for url_on_photo in response_apod.json():
         day_images = url_on_photo['url']
         if os.path.splitext(day_images)[1] in ['.jpg', '.png']:
@@ -31,7 +32,6 @@ if __name__=='__main__':
     args = parser.parse_args()
     try:
         token = os.environ['NASA_TOKEN']
-        apod_photos = []
         response_apod = get_apod_images(token, args.count_load)
         download_day_images(response_apod)
     
