@@ -2,7 +2,7 @@ import datetime
 import requests
 import os
 from dotenv import load_dotenv
-from main import create_path
+from path_for_images import create_path
 
 load_dotenv()
 

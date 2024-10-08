@@ -2,7 +2,7 @@ import requests
 import os
 import argparse
 from dotenv import load_dotenv
-from main import create_path
+from path_for_images import create_path
 
 
 
