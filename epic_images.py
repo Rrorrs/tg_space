@@ -2,13 +2,13 @@ import datetime
 import requests
 import os
 from dotenv import load_dotenv
-from path_for_images import create_path
+from path_for_images import create_a_folder_with_photo
 
-load_dotenv()
-
-
-token = os.environ['NASA_TOKEN']
 epic_images = []
+def main():
+    load_dotenv()
+    token = os.environ['NASA_TOKEN']
+    return token
 
 
 def get_image_epic(token):
@@ -30,17 +30,17 @@ def get_epic(response_epic):
         date = datetime.datetime.date(date_)
         date = str(date)
         change_date = date.replace('-', '/')
-        epic_url = f'https://api.nasa.gov/EPIC/archive/natural/{change_date}/png/{name_image}.png?api_key={token}'
+        epic_url = f'https://api.nasa.gov/EPIC/archive/natural/{change_date}/png/{name_image}.png?api_key={main()}'
         epic_images.append(epic_url)
 
     for image_number, image in enumerate(epic_images):
         file_name = 'epic_nasa'
-        create_path(file_name, image, image_number)
+        create_a_folder_with_photo(file_name, image, image_number)
 
 
 
 
 if __name__=='__main__':
     
-    response_epic = get_image_epic(token)
+    response_epic = get_image_epic(main())
     get_epic(response_epic)

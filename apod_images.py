@@ -2,7 +2,7 @@ import requests
 import os
 import argparse
 from dotenv import load_dotenv
-from path_for_images import create_path
+from path_for_images import create_a_folder_with_photo
 
 
 
@@ -22,7 +22,7 @@ def download_day_images(response_apod):
 
     for image_number, image in enumerate(apod_photos):
         file_name = 'nasa_apod'
-        create_path(file_name, image, image_number)
+        create_a_folder_with_photo(file_name, image, image_number)
 
 
 if __name__=='__main__':
