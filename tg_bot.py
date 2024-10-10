@@ -3,7 +3,6 @@ import requests
 import os
 from dotenv import load_dotenv
 import random
-from PIL import Image
 import time
 import argparse
 
@@ -11,15 +10,14 @@ import argparse
 
 def launching_the_bot(stop):
     load_dotenv()
-    tk = os.environ['TG_BOT_TOKEN']
-    bot = telegram.Bot(token=tk)
+    tg_token = os.environ['TG_BOT_TOKEN']
+    bot = telegram.Bot(token=tg_token)
     while True:
         folder = os.walk("images")
         for folder_parametrs in folder:
             dirpath, dirnames, filenames = folder_parametrs
         random.shuffle(filenames)
         for photo in filenames:
-            image = Image.open(f'images/{photo}')
             bot.send_photo(chat_id='@space_nas', photo=open(f'images/{photo}', 'rb'))
             time.sleep(stop)
 
