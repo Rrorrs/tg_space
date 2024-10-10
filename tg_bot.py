@@ -11,7 +11,7 @@ import argparse
 
 def launching_the_bot(stop):
     load_dotenv()
-    tk = os.environ['BOT_TOKEN']
+    tk = os.environ['TG_BOT_TOKEN']
     bot = telegram.Bot(token=tk)
     while True:
         folder = os.walk("images")
