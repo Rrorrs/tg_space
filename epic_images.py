@@ -2,7 +2,7 @@ import datetime
 import requests
 import os
 from dotenv import load_dotenv
-from path_for_images import create_a_folder_with_photo
+from create_path_for_images import create_a_folder_with_photo
 
 
 def get_image_epic(token):
