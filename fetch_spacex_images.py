@@ -1,7 +1,7 @@
 import requests
 import argparse
 import os
-from create_path_for_images import create_path
+from create_path_for_images import save_photo_in_folder
 from dotenv import load_dotenv
 
 
@@ -15,7 +15,7 @@ def get_spacex_link(id):
 def spacex_index_generation(images):
     for image_number, image in enumerate(images):
         file_name = 'spacex'
-        create_path(file_name, image, image_number)
+        save_photo_in_folder(file_name, image, image_number)
 
 
 if __name__ == '__main__':

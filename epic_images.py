@@ -2,7 +2,7 @@ import datetime
 import requests
 import os
 from dotenv import load_dotenv
-from create_path_for_images import create_a_folder_with_photo
+from create_path_for_images import save_photo_in_folder
 
 
 def get_image_epic(token):
@@ -31,7 +31,7 @@ def get_epic(response_epic):
 
     for image_number, image in enumerate(epic_images):
         file_name = 'epic_nasa'
-        create_a_folder_with_photo(file_name, image, image_number, payload)
+        save_photo_in_folder(file_name, image, image_number, payload)
 
 
 
