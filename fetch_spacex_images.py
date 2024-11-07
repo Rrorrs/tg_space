@@ -12,18 +12,14 @@ def get_spacex_link(id):
     return images
 
 
-def spacex_index_generation(images):
-    for image_number, image_link in enumerate(images):
-        file_name = 'spacex'
-        save_photo_in_folder(file_name, image_link, image_number)
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='поиск фотографий с API и загрузка их в папку программы. Для spacex нужен id номер конкретного запуска ракеты, иначе будет найден последний запуск.')
     parser.add_argument('--id', help='необходимый id запуска', default='5eb87d46ffd86e000604b388')
     args = parser.parse_args()
     try:
         images = get_spacex_link(args.id)
-        spacex_index_generation(images)
+        for image_number, image_link in enumerate(images):
+            file_name = 'spacex'
+            save_photo_in_folder(file_name, image_link, image_number)
     except requests.exceptions.HTTPError as error:
         print("Неверно введён id запуска")
