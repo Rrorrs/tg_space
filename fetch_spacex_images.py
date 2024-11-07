@@ -13,9 +13,9 @@ def get_spacex_link(id):
 
 
 def spacex_index_generation(images):
-    for image_number, image in enumerate(images):
+    for image_number, image_link in enumerate(images):
         file_name = 'spacex'
-        save_photo_in_folder(file_name, image, image_number)
+        save_photo_in_folder(file_name, image_link, image_number)
 
 
 if __name__ == '__main__':

@@ -20,9 +20,9 @@ def download_day_images(response_apod):
         if os.path.splitext(day_images)[1] in ['.jpg', '.png']:
             apod_photos.append(day_images)
 
-    for image_number, image in enumerate(apod_photos):
+    for image_number, image_link in enumerate(apod_photos):
         file_name = 'nasa_apod'
-        save_photo_in_folder(file_name, image, image_number)
+        save_photo_in_folder(file_name, image_link, image_number)
 
 
 if __name__=='__main__':

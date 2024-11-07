@@ -29,9 +29,9 @@ def get_epic(response_epic):
         epic_url = f'https://api.nasa.gov/EPIC/archive/natural/{changed_date}/png/{name_image}.png'
         epic_images.append(epic_url)
 
-    for image_number, image in enumerate(epic_images):
+    for image_number, image_link in enumerate(epic_images):
         file_name = 'epic_nasa'
-        save_photo_in_folder(file_name, image, image_number, payload)
+        save_photo_in_folder(file_name, image_link, image_number, payload)
 
 
 
