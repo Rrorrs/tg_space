@@ -19,7 +19,7 @@ def spacex_index_generation(images):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='поиск фотографий с API NASA и выгрузка их в телеграмм с помощью бота, можно настроить время интервала между выкладыванием фото (по умолчанию 4 часа). Для spacex нужен id номер конкретного запуска ракеты, иначе будет найден последний запуск.')
+    parser = argparse.ArgumentParser(description='поиск фотографий с API и загрузка их в папку программы. Для spacex нужен id номер конкретного запуска ракеты, иначе будет найден последний запуск.')
     parser.add_argument('--id', help='необходимый id запуска', default='5eb87d46ffd86e000604b388')
     args = parser.parse_args()
     try:

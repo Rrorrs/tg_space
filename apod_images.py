@@ -27,7 +27,7 @@ def download_day_images(response_apod):
 
 if __name__=='__main__':
     load_dotenv()
-    parser = argparse.ArgumentParser(description='поиск фотографий с API NASA и выгрузка их в телеграмм с помощью бота, можно настроить время интервала между выкладыванием фото (по умолчанию 4 часа). Для spacex нужен id номер конкретного запуска ракеты, иначе будет найден последний запуск.')
+    parser = argparse.ArgumentParser(description='поиск фотографий с API и загрузка их в папку программы, для последующего использования ботом.')
     parser.add_argument('--count_load', help='количество фотографий, которое нужно выгрузить', default=30)
     args = parser.parse_args()
     try:
