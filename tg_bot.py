@@ -8,7 +8,7 @@ import argparse
 
 
 
-def launching_the_bot(stop, id_address):
+def uploading_photos_by_bot(stop, id_address):
     load_dotenv()
     tg_token = os.environ['TG_BOT_TOKEN']
     bot = telegram.Bot(token=tg_token)
@@ -28,7 +28,7 @@ if __name__=='__main__':
     parser.add_argument('--tg_id', help='ваш адрес телеграмма, на который будут отправляться фото')
     args = parser.parse_args()
     try:
-        launching_the_bot(stop=args.time, id_address=args.tg_id)
+        uploading_photos_by_bot(stop=args.time, id_address=args.tg_id)
     except requests.exceptions.HTTPError as error:
         print('Введен неверный тип данных, время должно записываться только числами')
 
