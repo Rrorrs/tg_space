@@ -1,5 +1,6 @@
 import os
 import requests
+import traceback
 from dotenv import load_dotenv
 
 

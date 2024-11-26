@@ -1,6 +1,7 @@
 import telegram
 import requests
 import os
+import traceback
 from dotenv import load_dotenv
 import random
 import time
@@ -18,7 +19,8 @@ def uploading_photos_by_bot(stop, id_address):
             dirpath, dirnames, filenames = folder_parametrs
         random.shuffle(filenames)
         for photo in filenames:
-            bot.send_photo(chat_id=f'@{id_address}', photo=open(f'images/{photo}', 'rb'))
+            with open(f'images/{photo}', 'rb') as file:
+                bot.send_photo(chat_id=f'@{id_address}', photo=file)
             time.sleep(stop)
 
 
@@ -31,5 +33,6 @@ if __name__=='__main__':
         uploading_photos_by_bot(stop=args.time, id_address=args.tg_id)
     except requests.exceptions.HTTPError as error:
         print('Введен неверный тип данных, время должно записываться только числами')
+
 
     

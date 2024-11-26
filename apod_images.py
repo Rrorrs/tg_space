@@ -1,6 +1,7 @@
 import requests
 import os
 import argparse
+import traceback
 from dotenv import load_dotenv
 from create_path_for_images import save_photo_in_folder
 
