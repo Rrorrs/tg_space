@@ -15,5 +15,5 @@ def save_photo_in_folder(file_name, image_link, image_number, *args):
         with open(f'images/{file_name}_{image_number}.jpg', 'wb') as file:
             file.write(response.content)
     except Exception as error:
-        print('Ошибка при скачивании фотографии', error)
+        print(error)
         

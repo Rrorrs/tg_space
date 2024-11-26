@@ -32,7 +32,7 @@ if __name__=='__main__':
     try:
         uploading_photos_by_bot(stop=args.time, id_address=args.tg_id)
     except requests.exceptions.HTTPError as error:
-        print('Введен неверный тип данных, время должно записываться только числами')
+        print(error)
 
 
     

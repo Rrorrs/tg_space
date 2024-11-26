@@ -37,4 +37,4 @@ if __name__=='__main__':
         download_day_images(response_apod)
     
     except requests.exceptions.HTTPError as error:
-        print("Неверно введено количество фотографий, это должно быть только число, без пробелов и иных знаков")
+        print(error)

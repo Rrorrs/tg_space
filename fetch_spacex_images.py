@@ -22,4 +22,4 @@ if __name__ == '__main__':
             file_name = 'spacex'
             save_photo_in_folder(file_name, image_link, image_number)
     except requests.exceptions.HTTPError as error:
-        print("Неверно введён id запуска")
+        print(error)
